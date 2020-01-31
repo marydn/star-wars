@@ -1,6 +1,6 @@
 <?php
 
-use App\Kernel;
+use StarWars\Kernel;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
