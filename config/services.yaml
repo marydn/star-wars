@@ -25,3 +25,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    GuzzleHttp\ClientInterface:
+        alias: GuzzleHttp\Client
+
+    GuzzleHttp\Client:
+        arguments:
+            - { timeout: 2, connect_timeout: 2 }
