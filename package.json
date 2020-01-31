@@ -1,0 +1,28 @@
+{
+  "name": "star-wars",
+  "version": "1.0.0",
+  "description": "### 🐳 Needed tools",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "webpack --config config/webpack/webpack.prod.js",
+    "build": "webpack --config config/webpack/webpack.dev.js"
+  },
+  "author": "Mary De Nóbrega",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "css-loader": "^3.4.2",
+    "jquery": "^3.4.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "popper.js": "^1.16.1",
+    "style-loader": "^1.1.3"
+  }
+}
