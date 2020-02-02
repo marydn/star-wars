@@ -35,6 +35,8 @@ final class CachedMiddleware
                     function (ResponseInterface $response) use ($cache, $cacheKey, $cacheTime) {
                         if ($response->getStatusCode() === 200) {
                             $cache->setObject($cacheKey, $response, $cacheTime);
+
+                            return $cache->getObject($cacheKey);
                         }
 
                         return $response;
