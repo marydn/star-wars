@@ -1,4 +1,8 @@
-require('bootstrap')
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Vue from 'vue'
+import ApiFetcher from '@/ApiFetcher'
 
-console.log('a')
+Vue.config.productionTip = false
+
+export default new Vue({
+    render: h => h(ApiFetcher),
+}).$mount('#app')
