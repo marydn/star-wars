@@ -11,4 +11,6 @@
 /node_modules/
 
 # assets
-/public/js/
+/public/js/dist/*
+!/public/js/dist/.gitkeep
+
