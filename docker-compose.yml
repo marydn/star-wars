@@ -19,17 +19,6 @@ services:
     ports:
       - 6380:6379
 
-  node:
-    container_name: star-wars-node
-    build:
-      context: .
-      dockerfile: ./etc/node/Dockerfile
-    volumes:
-      - .:/app:delegated
-    working_dir: /app
-    depends_on:
-      - php
-
   php:
     container_name: star-wars-php
     build:

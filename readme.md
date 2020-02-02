@@ -3,8 +3,11 @@
 ### 🐳 Needed tools
 
 1. [Install Docker](https://www.docker.com/get-started)
-2. Clone this project: `$ git clone https://github.com/marydn/star-wars`
-3. Move to the project folder: `$ cd star-wars`
+2. [Install npm](https://www.npmjs.com/get-npm)
+3. [Install yarn](https://classic.yarnpkg.com/en/docs/install)
+4. Clone this project: `$ git clone https://github.com/marydn/star-wars`
+5. Move to the project folder: `$ cd star-wars`
+6. Generate assets: `$ yarn install && yarn build`
 
 ### 🛠️ Environment configuration
 
