@@ -26,7 +26,7 @@ composer composer-install composer-update:
 # Nginx: Reloads the server
 
 reload:
-	@docker-compose exec php-fpm kill -USR2 1
+	@docker-compose exec php kill -USR2 1
 	@docker-compose exec nginx nginx -s reload
 
 # ✅ Tests
