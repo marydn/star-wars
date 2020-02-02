@@ -12,8 +12,3 @@
 
 # assets
 /public/js/
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-/build/test_results/
-###< phpunit/phpunit ###

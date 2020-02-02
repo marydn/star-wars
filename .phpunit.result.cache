@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":322:{a:2:{s:7:"defects";a:2:{s:59:"StarWars\Tests\Service\RedisCacheTest::testSetObjectOnRedis";i:4;s:52:"StarWars\Tests\Service\RedisCacheTest::testSetObject";i:4;}s:5:"times";a:2:{s:59:"StarWars\Tests\Service\RedisCacheTest::testSetObjectOnRedis";d:0.004;s:52:"StarWars\Tests\Service\RedisCacheTest::testSetObject";d:0.005;}}}
