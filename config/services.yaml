@@ -1,34 +1,64 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
 services:
-    # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        autowire: true
+        autoconfigure: true
 
-    # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
     StarWars\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
-    # controllers are imported separately to make sure services can be injected
-    # as action arguments even if you don't extend any base controller class
     StarWars\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
 
     GuzzleHttp\ClientInterface:
         alias: GuzzleHttp\Client
 
     GuzzleHttp\Client:
+        class: GuzzleHttp\Client
         arguments:
-            - { timeout: 2, connect_timeout: 2 }
+            - handler: '@http_client.handlerstack'
+              connect_timeout: 5
+              timeout: 5
+
+    http_client.handlerstack:
+        class: GuzzleHttp\HandlerStack
+        factory: [GuzzleHttp\HandlerStack, 'create']
+        calls:
+            - ['push', ['@http_client.middleware.closure', 'predis_cache']]
+
+    http_client.middleware.closure:
+        class: Closure
+        factory:
+            - 'StarWars\Service\Middleware\CachedMiddleware'
+            - 'onRequest'
+        arguments:
+            - '@redis_cache'
+            - '%env(REDIS_TTL)%'
+
+    redis_cache:
+        class: StarWars\Service\RedisCache
+        arguments:
+            - '@redis_client'
+
+    redis_client:
+        class: Closure
+        factory:
+            - 'Symfony\Component\Cache\Adapter\RedisAdapter'
+            - 'createConnection'
+        arguments:
+            - '%env(REDIS_CONNECTION)%'
+            - class: \Redis
+
+    cache_adapter:
+        class: Symfony\Component\Cache\Adapter\RedisAdapter
+        arguments:
+            - '@redis_client'
+
+    StarWars\Service\Normalizer\:
+        resource: '../src/Service/Normalizer/*'
+        tags:
+            - 'serializer.normalizer'
+            - 'serializer.denormalizer'
