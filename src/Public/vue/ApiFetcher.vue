@@ -25,7 +25,7 @@
             </tr>
             <tr v-for="(item, index) in items" :key="index" v-show="items.length">
                 <td>{{ index }}</td>
-                <td><a :href="item.url">{{ item.name }}</a></td>
+                <td><a :href="item.url" target="_blank">{{ item.name }}</a></td>
             </tr>
             </tbody>
         </table>
