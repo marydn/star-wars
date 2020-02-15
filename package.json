@@ -26,7 +26,7 @@
     "vue": "^2.6.11",
     "vue-loader": "^15.8.3",
     "vue-template-compiler": "^2.6.11",
-    "yarn": "^1.21.1"
+    "yarn": "^1.22.0"
   },
   "repository": "git@bitbucket.org:marydn/star-wars.git"
 }
